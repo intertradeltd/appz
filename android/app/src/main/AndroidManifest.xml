@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.intertrade">
+    <uses-permission android:name="ANDROID.PERMISSION.INTERNET"/>
+
    <application
-        android:label="intertrade"
+        android:label="INEC LMS"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
