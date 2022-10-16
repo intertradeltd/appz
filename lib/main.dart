@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intertrade/screens/layout.dart';
+import 'package:intertrade/screens/login_screen/login_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 void main() => runApp(App());
@@ -32,7 +33,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => HomePage()),
+      MaterialPageRoute(builder: (_) => LoginScreen()),
     );
   }
 
@@ -77,12 +78,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       globalFooter: SizedBox(
         // width: double.infinity,
         height: 50,
-        child: ElevatedButton(
-          child: const Text(
-            'Let\'s go right away!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 3.0, 0, 10.0),
+          child: ElevatedButton(
+            child: const Text(
+              'Let\'s go right away!',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+            onPressed: () => _onIntroEnd(context),
           ),
-          onPressed: () => _onIntroEnd(context),
         ),
       ),
       pages: [
@@ -159,13 +163,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       onDone: () => _onIntroEnd(
           Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  MyHomePage()),
+          MaterialPageRoute(builder: (context) =>  LoginScreen()),
         )
       ),
       onSkip: () => _onIntroEnd(
           Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  MyHomePage()),
+          MaterialPageRoute(builder: (context) =>  LoginScreen()),
         )
       ), // You can override onSkip callback
       showSkipButton: false,
@@ -196,16 +200,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       //     borderRadius: BorderRadius.all(Radius.circular(8.0)),
       //   ),
       // ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
     );
   }
 }
